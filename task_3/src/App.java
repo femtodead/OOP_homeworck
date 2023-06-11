@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+import StudentDomen.AverageAge;
+import StudentDomen.Person;
 import StudentDomen.Student;
 import StudentDomen.StudentGroup;
 import StudentDomen.StudentStream;
@@ -42,50 +43,50 @@ public class App {
         listStud1.add(s5);
         listStud1.add(s6);
         listStud1.add(pers1);
-        List<Student> listStud2 = new ArrayList<Student>();
-        listStud2.add(s7);
-        listStud2.add(s8);
-        listStud2.add(s9);
-        listStud2.add(s10);
-        listStud2.add(s11);
-        List<Student> listStud3 = new ArrayList<Student>();
-        listStud3.add(s12);
-        listStud3.add(s13);
-        listStud3.add(s14);
-        listStud3.add(s15);
-        List<Student> listStud4 = new ArrayList<Student>();
-        listStud4.add(s16);
-        listStud4.add(s17);
-        listStud3.add(s18);
+        // List<Student> listStud2 = new ArrayList<Student>();
+        // listStud2.add(s7);
+        // listStud2.add(s8);
+        // listStud2.add(s9);
+        // listStud2.add(s10);
+        // listStud2.add(s11);
+        // List<Student> listStud3 = new ArrayList<Student>();
+        // listStud3.add(s12);
+        // listStud3.add(s13);
+        // listStud3.add(s14);
+        // listStud3.add(s15);
+        // List<Student> listStud4 = new ArrayList<Student>();
+        // listStud4.add(s16);
+        // listStud4.add(s17);
+        // listStud3.add(s18);
 
-        StudentGroup group4333 = new StudentGroup(listStud1, 4333);
-        StudentGroup group4222 = new StudentGroup(listStud2, 4222);
-        StudentGroup group4555 = new StudentGroup(listStud3, 4555);
-        StudentGroup group4666 = new StudentGroup(listStud4, 4666);
+        // StudentGroup group4333 = new StudentGroup(listStud1, 4333);
+        // StudentGroup group4222 = new StudentGroup(listStud2, 4222);
+        // StudentGroup group4555 = new StudentGroup(listStud3, 4555);
+        // StudentGroup group4666 = new StudentGroup(listStud4, 4666);
 
-        List<StudentGroup> StreamList = new ArrayList<StudentGroup>();
-        StreamList.add(group4333);
-        StreamList.add(group4222);
-        StreamList.add(group4555);
-        StreamList.add(group4666);
-        StudentStream stream1  = new StudentStream(StreamList, 1);
+        // List<StudentGroup> StreamList = new ArrayList<StudentGroup>();
+        // StreamList.add(group4333);
+        // StreamList.add(group4222);
+        // StreamList.add(group4555);
+        // StreamList.add(group4666);
+        // StudentStream stream1  = new StudentStream(StreamList, 1);
         
-        for (StudentGroup studentGroup : stream1) {
-           System.out.println(studentGroup.toString()); 
-        }
+        // for (StudentGroup studentGroup : stream1) {
+        //    System.out.println(studentGroup.toString()); 
+        // }
 
-        System.out.println("=============Sort==================");
+        // System.out.println("=============Sort==================");
 
-        Collections.sort(stream1.getGroupList());
+        // Collections.sort(stream1.getGroupList());
 
-        for (StudentGroup studentGroup : stream1) {
-            System.out.println(studentGroup.toString()); 
-         }
+        // for (StudentGroup studentGroup : stream1) {
+        //     System.out.println(studentGroup.toString()); 
+        //  }
 
 
-         System.out.println("=============GS.toString==================");
+        //  System.out.println("=============GS.toString==================");
 
-         System.out.println(stream1.toString());
+        //  System.out.println(stream1.toString());
         // //System.out.println(group4335.toString());
 
         // for(Student stud:group4335)
@@ -100,5 +101,8 @@ public class App {
         // {
         //     System.out.println(stud.toString());
         // }
+
+        AverageAge<Student> age = new AverageAge<Student>(listStud1);
+        age.getAverageAge();
     }
 }
