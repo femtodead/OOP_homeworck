@@ -3,6 +3,9 @@ package StudentDomen;
 import java.util.List;
 
 public class AverageAge<T extends Person> {
+    /**
+     *получаемый список персонала буть то студенты и тп
+     */
     List<T> myList;     
     public AverageAge(List<T> list) {
         this.myList = list;
