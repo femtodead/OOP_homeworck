@@ -80,7 +80,6 @@ public class ComplexNumber implements iCalcComplexNumber {
         {
             this.real = 0.0;
             this.imaginary = Double.parseDouble(ar.get(0));
-            System.out.println(ar.toString());
             return this;
         } 
         this.real = Double.parseDouble(ar.get(0));
@@ -91,44 +90,51 @@ public class ComplexNumber implements iCalcComplexNumber {
 
 
     @Override
-    public iCalcComplexNumber sum(ComplexNumber primaryArg) {
+    public iCalcComplexNumber sum(iCalcComplexNumber primaryArg) {
+        ComplexNumber temp = new ComplexNumber();
+        temp.parseComplexNumber(primaryArg.getResult());
         Double a = this.real;
-        Double b = primaryArg.getReal();
+        Double b = temp.getReal();
         Double c = this.imaginary;
-        Double d = primaryArg.getImaginary();
+        Double d = temp.getImaginary();
         iCalcComplexNumber result = new ComplexNumber(a+b, c+d);
         return result;
     }
     @Override
-    public iCalcComplexNumber multi(ComplexNumber primaryArg) {
+    public iCalcComplexNumber multi(iCalcComplexNumber primaryArg) {
+        ComplexNumber temp = new ComplexNumber();
+        temp.parseComplexNumber(primaryArg.getResult());
         Double a = this.real;
-        Double b = primaryArg.getReal();
+        Double b = temp.getReal();
         Double c = this.imaginary;
-        Double d = primaryArg.getImaginary();
+        Double d = temp.getImaginary();
         iCalcComplexNumber result = new ComplexNumber(a*b-c*d, b*c + a*d);
         return result;
     }
     @Override
-    public iCalcComplexNumber subtraction(ComplexNumber primaryArg) {
+    public iCalcComplexNumber subtraction(iCalcComplexNumber primaryArg) {
+        ComplexNumber temp = new ComplexNumber();
+        temp.parseComplexNumber(primaryArg.getResult());
         Double a = this.real;
-        Double b = primaryArg.getReal();
+        Double b = temp.getReal();
         Double c = this.imaginary;
-        Double d = primaryArg.getImaginary();
+        Double d = temp.getImaginary();
         iCalcComplexNumber result = new ComplexNumber(a-b, c-d);
         return result;
     }
     @Override
-    public iCalcComplexNumber division(ComplexNumber primaryArg) {
+    public iCalcComplexNumber division(iCalcComplexNumber primaryArg) {
+        ComplexNumber temp = new ComplexNumber();
+        temp.parseComplexNumber(primaryArg.getResult());
         Double a = this.real;
-        Double b = primaryArg.getReal();
+        Double b = temp.getReal();
         Double c = this.imaginary;
-        Double d = primaryArg.getImaginary();
-        iCalcComplexNumber result = new ComplexNumber((a*b+c*d)/(b*b+d*d), (c*b - a*d)/(b*b+d*d));
+        Double d = temp.getImaginary();
+        ComplexNumber result = new ComplexNumber((a*b+c*d)/(b*b+d*d), (c*b - a*d)/(b*b+d*d));
         return result;
     }
     @Override
     public String getResult() {
-        System.out.println(this.real +" , " + this.imaginary);
         if (imaginary != 0.0 && real !=0.0)
         {
             if (imaginary > 0.0)
@@ -152,7 +158,5 @@ public class ComplexNumber implements iCalcComplexNumber {
             }
         }
         return imaginary.toString() + "i";
-    }
-    public void setPreviousAction(iCalcComplexNumber multi) {
     }
 }

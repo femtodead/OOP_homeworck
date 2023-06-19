@@ -1,11 +1,11 @@
 package Controller;
 
-import Model.ComplexNumber;
 
 public interface iCalcComplexNumber {
-    iCalcComplexNumber sum(ComplexNumber primaryArg);
-    iCalcComplexNumber multi(ComplexNumber primaryArg);
-    iCalcComplexNumber subtraction(ComplexNumber primaryArg);
-    iCalcComplexNumber division(ComplexNumber primaryArg);
+    iCalcComplexNumber sum(iCalcComplexNumber primaryArg);
+    iCalcComplexNumber multi(iCalcComplexNumber primaryArg);
+    iCalcComplexNumber subtraction(iCalcComplexNumber primaryArg);
+    iCalcComplexNumber division(iCalcComplexNumber primaryArg);
     String getResult();
+    public  iCalcComplexNumber parseComplexNumber(String text);
 }

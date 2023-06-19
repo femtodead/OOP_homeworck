@@ -3,11 +3,13 @@ package Controller;
 
 public class Controller {
     iGetView view;
-    iCalcComplexNumber model;
+    iCalcComplexNumber firstNumber;
+    iCalcComplexNumber secondNumber;
     
-    public Controller(iGetView view, iCalcComplexNumber model) {
+    public Controller(iGetView view, iCalcComplexNumber firstNumber, iCalcComplexNumber secondNumber) {
         this.view = view;
-        this.model = model;
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
     }
 
     public iGetView getView() {
@@ -19,10 +21,55 @@ public class Controller {
     }
 
     public iCalcComplexNumber getModel() {
-        return model;
+        return firstNumber;
     }
 
     public void setModel(iCalcComplexNumber model) {
-        this.model = model;
+        this.firstNumber = model;
+    }
+
+    
+    public void run() {
+        while (true) {
+            String primaryArg = view.prompt("Введите первый аргумент: ");
+            firstNumber.parseComplexNumber(primaryArg);
+            while (true) {
+                String cmd = view.prompt("Введите команду (*, +, /, -, =) : ");
+                if (cmd.equals("*")) {
+                    String arg = view.prompt("Введите второй аргумент: ");
+                    secondNumber.parseComplexNumber(arg);
+                    this.firstNumber = firstNumber.multi(secondNumber);
+                    continue;
+                }
+                if (cmd.equals("+")) {
+                    String arg = view.prompt("Введите второй аргумент: ");
+                    secondNumber.parseComplexNumber(arg);
+                    this.firstNumber = firstNumber.sum(secondNumber);
+                    continue;
+                }
+                    if (cmd.equals("/")) {
+                    String arg = view.prompt("Введите второй аргумент: ");
+                    secondNumber.parseComplexNumber(arg);
+                    this.firstNumber = firstNumber.division(secondNumber);
+                    continue;
+                }
+                    if (cmd.equals("-")) {
+                    String arg = view.prompt("Введите второй аргумент: ");
+                    secondNumber.parseComplexNumber(arg);
+                    this.firstNumber = firstNumber.subtraction(secondNumber);
+                    continue;
+                }
+                if (cmd.equals("=")) {
+    
+                    System.out.printf("Результат %s\n", view.accept(firstNumber.getResult()));
+                    break;
+                }
+            }
+            String cmd = view.prompt("Еще посчитать (Y/N)?");
+            if (cmd.equals("Y")) {
+                continue;
+            }
+            break;
+        }
     }
 }
