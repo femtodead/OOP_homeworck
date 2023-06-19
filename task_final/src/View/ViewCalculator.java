@@ -2,57 +2,50 @@ package View;
 
 import java.util.Scanner;
 
-import Controller.iCalcComplexNumber;
-import Model.ComplexNumber;
+import Controller.iGetView;
 
-public class ViewCalculator {
-    private ComplexNumber previousAction;
-
-    public iCalcComplexNumber getPreviousAction() {
-        return previousAction;
-    }
-
-    public void setPreviousAction(ComplexNumber previousAction) {
-        this.previousAction = previousAction;
-    }
-
+public class ViewCalculator implements iGetView{
+    private String previousAction;
+    private String result;
+    
     public ViewCalculator() {
-        this.previousAction =  new ComplexNumber(0.0, 0.0);
+        this.previousAction = "";
+        this.result = "";
     }
+
+
+
 
     public void run() {
         while (true) {
-            iCalcComplexNumber primaryArg = promptComplexNumber("Введите первый аргумент: ");
+            String primaryArg = promptComplexNumber("Введите первый аргумент: ");
 
             //iCalculable calculator = calculableFactory.create(primaryArg);
             while (true) {
                 String cmd = prompt("Введите команду (*, +, /, -, =) : ");
                 if (cmd.equals("*")) {
-                    ComplexNumber arg = promptComplexNumber("Введите второй аргумент: ");
-                    this.previousAction.setPreviousAction(primaryArg.multi(arg));
-                    System.out.println(primaryArg.getResult());
+                    String arg = promptComplexNumber("Введите второй аргумент: ");
+                    this.previousAction = arg;
                     continue;
                 }
                 if (cmd.equals("+")) {
-                    ComplexNumber arg = promptComplexNumber("Введите второй аргумент: ");
-                    this.previousAction.setPreviousAction(primaryArg.sum(arg));
-                    System.out.println(previousAction.getResult());
+                    String arg = promptComplexNumber("Введите второй аргумент: ");
+                    this.previousAction = arg;
                     continue;
                 }
                     if (cmd.equals("/")) {
-                    ComplexNumber arg = promptComplexNumber("Введите второй аргумент: ");
-                    previousAction.setPreviousAction(primaryArg.division(arg));
+                    String arg = promptComplexNumber("Введите второй аргумент: ");
+                    this.previousAction = arg;
                     continue;
                 }
                     if (cmd.equals("-")) {
-                    ComplexNumber arg = promptComplexNumber("Введите второй аргумент: ");
-                     this.previousAction.setPreviousAction(primaryArg.subtraction(arg));
+                    String arg = promptComplexNumber("Введите второй аргумент: ");
+                    this.previousAction = arg;
                     continue;
                 }
                 if (cmd.equals("=")) {
-                    System.out.println(previousAction.getResult());
-                    String result = this.previousAction.getResult();
-                    System.out.printf("Результат %s\n", result);
+                    accept(cmd);
+                    System.out.printf("Результат %s\n", this.result);
                     break;
                 }
             }
@@ -70,10 +63,18 @@ public class ViewCalculator {
         return in.nextLine();
     }
 
-    private ComplexNumber promptComplexNumber(String message) {
+    private String promptComplexNumber(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        ComplexNumber cN = new ComplexNumber(0.0, 0.0);
-        return cN.parseComplexNumber(in.nextLine());
+        return in.nextLine();
+    }
+
+    @Override
+    public String broadcast() {
+        return this.previousAction;
+    }
+    @Override
+    public void accept(String text) {
+        this.result = text;
     }
 }

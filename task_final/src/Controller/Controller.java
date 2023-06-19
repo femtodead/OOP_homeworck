@@ -1,21 +1,20 @@
 package Controller;
 
-import View.ViewCalculator;
 
 public class Controller {
-    ViewCalculator view;
+    iGetView view;
     iCalcComplexNumber model;
     
-    public Controller(ViewCalculator view, iCalcComplexNumber model) {
+    public Controller(iGetView view, iCalcComplexNumber model) {
         this.view = view;
         this.model = model;
     }
 
-    public ViewCalculator getView() {
+    public iGetView getView() {
         return view;
     }
 
-    public void setView(ViewCalculator view) {
+    public void setView(iGetView view) {
         this.view = view;
     }
 

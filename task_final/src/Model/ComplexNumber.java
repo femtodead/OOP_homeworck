@@ -12,6 +12,10 @@ public class ComplexNumber implements iCalcComplexNumber {
         this.real = real;
         this.imaginary = imaginary;
     }
+        public ComplexNumber() {
+        this.real = 0.0;
+        this.imaginary = 0.0;
+    }
     public Double getReal() {
         return real;
     }

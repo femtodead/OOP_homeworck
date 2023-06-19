@@ -3,6 +3,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import Controller.Controller;
 import Controller.iCalcComplexNumber;
 import Model.ComplexNumber;
 import View.ViewCalculator;
@@ -54,10 +55,10 @@ public class App {
                 
                 
                 
-                 ViewCalculator calculator = new ViewCalculator(); 
+                //  ViewCalculator calculator = new ViewCalculator(); 
                 // iCalculable calculator = new CalcDecorator(new Calculator(0.0),new Logger());
                 // ViewCalculator view = new ViewCalculator(calculator);
-                calculator.run();
+                // calculator.run();
                 // iCalcComplexNumber com1 = new  ComplexNumber(3.0, 1.0);
                 // iCalcComplexNumber com2 = new  ComplexNumber(4.0, 2.0);
                 // iCalcComplexNumber com3 = new  ComplexNumber(0.0, 2.0);
@@ -73,6 +74,8 @@ public class App {
                 // System.out.println(com3.getResult());
                 // System.out.println(com4.getResult());
                 // System.out.println(com5.getResult());
-                
+
+                Controller calc = new Controller(new ViewCalculator(), new ComplexNumber());
+                calc.getView().run();                
             }
         }
