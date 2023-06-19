@@ -17,5 +17,6 @@ public class App {
         System.out.println(r2.getHeight() +"  "+ r2.getWidth());
         r2.setWidth(5);
         System.out.println(r2.getHeight() +"  "+ r2.getWidth());
+       
     }
 }
